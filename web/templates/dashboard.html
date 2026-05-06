@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Hotel Web App{% endblock %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+    
+    <div class="cards-grid">
+        <div class="card">
+            <h3>Total Rooms</h3>
+            <p class="value">{{ total_rooms }}</p>
+        </div>
+        <div class="card">
+            <h3>Available Rooms</h3>
+            <p class="value">{{ available_rooms }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Bookings</h3>
+            <p class="value">{{ total_bookings }}</p>
+        </div>
+        <div class="card">
+            <h3>Pending Payments</h3>
+            <p class="value">{{ pending_payments }}</p>
+        </div>
+    </div>
+{% endblock %}

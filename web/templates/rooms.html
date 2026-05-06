@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Rooms - Hotel Web App{% endblock %}
+
+{% block content %}
+    <h1>Rooms</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Room ID</th>
+                <th>Room Number</th>
+                <th>Type</th>
+                <th>Floor</th>
+                <th>Price/Night</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+            <tr>
+                <td>{{ room.id }}</td>
+                <td>{{ room.room_number }}</td>
+                <td>{{ room.type | title }}</td>
+                <td>{{ room.floor }}</td>
+                <td>${{ "%.2f"|format(room.price_per_night) }}</td>
+                <td>
+                    <span class="badge {{ room.status }}">{{ room.status }}</span>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6" style="text-align: center;">No rooms found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Billing - Hotel Web App{% endblock %}
+
+{% block content %}
+    <h1>Billing</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Bill ID</th>
+                <th>Booking ID</th>
+                <th>Customer Name</th>
+                <th>Room Total</th>
+                <th>Additional Charges</th>
+                <th>Total Amount</th>
+                <th>Payment Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bill in bills %}
+            <tr>
+                <td>{{ bill.bill_id }}</td>
+                <td>{{ bill.booking_id }}</td>
+                <td>{{ bill.customer_name }}</td>
+                <td>${{ "%.2f"|format(bill.room_charges) }}</td>
+                <td>${{ "%.2f"|format(bill.additional_charges) }}</td>
+                <td><strong>${{ "%.2f"|format(bill.total_amount) }}</strong></td>
+                <td>
+                    <span class="badge {{ bill.payment_status }}">{{ bill.payment_status }}</span>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7" style="text-align: center;">No billing records found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

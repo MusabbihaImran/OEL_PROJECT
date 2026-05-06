@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback - Hotel Web App{% endblock %}
+
+{% block content %}
+    <h1>Customer Feedback</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Feedback ID</th>
+                <th>Booking ID</th>
+                <th>Customer Name</th>
+                <th>Rating</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback.id }}</td>
+                <td>{{ feedback.booking_id }}</td>
+                <td>{{ feedback.customer_name }}</td>
+                <td>
+                    {% for _ in range(feedback.rating) %}
+                    <span style="color: #FFD700;">★</span>
+                    {% endfor %}
+                    {% for _ in range(5 - feedback.rating) %}
+                    <span style="color: #ccc;">☆</span>
+                    {% endfor %}
+                    ({{ feedback.rating }}/5)
+                </td>
+                <td>{{ feedback.comment }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" style="text-align: center;">No feedback found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
