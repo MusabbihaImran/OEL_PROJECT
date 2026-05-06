@@ -47,7 +47,7 @@ class HotelWebApp:
         total_rooms = len(rooms)
         available_rooms = sum(1 for r in rooms if r['status'] == 'available')
         total_bookings = len(bookings)
-        pending_payments = sum(1 for b in bills if b['status'] == 'pending')
+        pending_payments = sum(1 for b in bills if b['payment_status'] == 'pending')
 
         return render_template('dashboard.html', 
                                total_rooms=total_rooms,

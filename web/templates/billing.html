@@ -24,7 +24,7 @@
                 <td>{{ bill.booking_id }}</td>
                 <td>{{ bill.customer_name }}</td>
                 <td>${{ "%.2f"|format(bill.room_charges) }}</td>
-                <td>${{ "%.2f"|format(bill.additional_charges) }}</td>
+                <td>${{ "%.2f"|format(bill.extra_charges) }}</td>
                 <td><strong>${{ "%.2f"|format(bill.total_amount) }}</strong></td>
                 <td>
                     <span class="badge {{ bill.payment_status }}">{{ bill.payment_status }}</span>
